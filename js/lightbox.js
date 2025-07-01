@@ -1,15 +1,12 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.querySelector('.lightbox-img');
-  const closeBtn = document.querySelector('.lightbox .close');
-  const galleryImages = document.querySelectorAll('.gallery-grid img');
+  const closeBtn = document.querySelector('.close');
 
-  galleryImages.forEach(img => {
+  document.querySelectorAll('.gallery-grid img').forEach(img => {
     img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
       lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
+      lightbox.style.display = 'flex';
     });
   });
 
@@ -17,9 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.style.display = 'none';
   });
 
-  lightbox.addEventListener('click', e => {
+  // Lightbox'a tıklayınca da kapanması için
+  lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
       lightbox.style.display = 'none';
     }
   });
 });
+   
