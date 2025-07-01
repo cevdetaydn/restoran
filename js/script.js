@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(sidebarTimeout);
     sidebarTimeout = setTimeout(() => {
       cartSidebar.style.transform = 'translateX(100%)';
-    }, 4000);
+    }, 1000);
   }
 
   function updateCartUI() {
