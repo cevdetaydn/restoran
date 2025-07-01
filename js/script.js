@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   confirmOrderBtn.addEventListener('click', sendOrderToWhatsApp);
 
-  // Başlangıçta sepet menüsünü kapalı tut
+  // Başlangıçta menü kapalı
   cartSidebar.classList.remove('show');
 
   updateCartUI();

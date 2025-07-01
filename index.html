@@ -140,7 +140,12 @@
     </section>
   </main>
 
-<!-- Sağdaki Alışveriş Sepeti Paneli -->
+<!-- Sepet ikonu -->
+<div id="cart-icon">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Sepet sidebar -->
 <aside id="cart-sidebar">
   <h2>Alışveriş Sepeti</h2>
   <div id="cart-items">
@@ -149,6 +154,10 @@
   <div id="cart-total">Toplam: 0₺</div>
   <button id="confirm-order" disabled>Siparişi Onayla</button>
 </aside>
+
+<!-- Bildirim -->
+<div id="notification" class="hidden"></div>
+
 
 
 
@@ -161,7 +170,7 @@
 
   <script src="js/script.js"></script>
   <div id="notification" class="hidden"></div>
-  <div id="cart-icon">🛒<span id="cart-count">0</span></div>
+  
 
 </body>
 </html>
