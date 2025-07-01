@@ -4,9 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartTotalContainer = document.getElementById('cart-total');
   const confirmOrderBtn = document.getElementById('confirm-order');
   const notification = document.getElementById('notification');
-
   const cartSidebar = document.getElementById('cart-sidebar');
-  let sidebarTimeout;
+  const cartIcon = document.getElementById('cart-icon');
+  const cartCount = document.getElementById('cart-count');
+
+  // Sepet ikonuna tıklayınca menüyü aç/kapa
+  cartIcon.addEventListener('click', () => {
+    cartSidebar.classList.toggle('show');
+  });
 
   function showNotification(message) {
     notification.textContent = message;
@@ -18,20 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   }
 
-  function showToastMenu() {
-    cartSidebar.style.transform = 'translateX(0)';
-    clearTimeout(sidebarTimeout);
-    sidebarTimeout = setTimeout(() => {
-      cartSidebar.style.transform = 'translateX(100%)';
-    }, 1000);
-  }
-
   function updateCartUI() {
     cartItemsContainer.innerHTML = '';
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = '<p>Sepetiniz boş.</p>';
       cartTotalContainer.textContent = 'Toplam: 0₺';
       confirmOrderBtn.disabled = true;
+      cartCount.textContent = '0';
       return;
     }
 
@@ -68,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cartTotalContainer.textContent = `Toplam: ${total}₺`;
     confirmOrderBtn.disabled = false;
 
-    showToastMenu();
+    cartCount.textContent = cart.length.toString();
   }
 
   function addToCart(productName, productPrice) {
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const message = `Merhaba, aşağıdaki ürünleri sipariş etmek istiyorum:\n${messageLines.join('\n')}\nToplam: ${total}₺`;
     const encodedMessage = encodeURIComponent(message);
 
-    const phoneNumber = '905305858228';
+    const phoneNumber = '905305858228'; // Kendi numaranıza göre değiştirin
     const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(url, '_blank');
   }
@@ -110,8 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   confirmOrderBtn.addEventListener('click', sendOrderToWhatsApp);
 
-  cartSidebar.style.transform = 'translateX(100%)';
-  cartSidebar.style.transition = 'transform 0.3s ease';
+  // Başlangıçta sepet menüsünü kapalı tut
+  cartSidebar.classList.remove('show');
 
   updateCartUI();
 });
