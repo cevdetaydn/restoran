@@ -72,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function addToCart(productName, productPrice) {
     cart.push({ name: productName, price: productPrice });
     updateCartUI();
-    showNotification(`${productName} sepete eklendi!`);
+    /*showNotification(`${productName} sepete eklendi!`);*/
   }
 
   function removeFromCart(index) {
     cart.splice(index, 1);
     updateCartUI();
-    showNotification('Ürün sepetten silindi.');
+    /*showNotification('Ürün sepetten silindi.');*/
   }
 
   function sendOrderToWhatsApp() {
